@@ -6,3 +6,25 @@ Find the number that occurs twice and the number that is missing and return them
 Input: nums = [1,2,2,4]
 Output: [2,3]
 */
+
+const findWrongNumber = (nums) => {
+  const countMap = {};
+  let duplicate, missing;
+
+  for (const num of nums) {
+    countMap[num] = (countMap[num] || 0) + 1;
+  }
+
+  for (let i = 1; i <= nums.length; i++) {
+    if (countMap[i] === 2) {
+      duplicate = i;
+    } else if (!countMap[i]) {
+      missing = i;
+    }
+  }
+
+  return [duplicate, missing];
+};
+
+const nums = [1,2,2,4];
+console.log(findWrongNumber(nums));
