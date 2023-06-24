@@ -10,3 +10,25 @@ Example 1:
 Input: nums = [1,2,2,3]
 Output: true
 */
+
+const isMonotonicArray = (nums) => {
+    let isIncreasing = true, isDecreasing = true;
+
+    for(let i = 1; i < nums.length;i++) {
+        if(nums[i-1] > nums[i]) {
+            isIncreasing = false
+        }
+        if(nums[i-1] < nums[i]) {
+            isDecreasing = false
+        }
+
+        if(!isIncreasing && !isDecreasing) {
+            break;
+        }
+    }
+
+    return isIncreasing || isDecreasing;
+}
+
+const nums = [15, 25, 10, 18, 20, 30];
+console.log(isMonotonicArray(nums));

@@ -13,3 +13,22 @@ Output: 0
 
 Explanation: The score is max(nums) - min(nums) = 1 - 1 = 0.
 */
+
+const calcArrayScore = (nums, k) => {
+    let max = Number.NEGATIVE_INFINITY, min = Number.POSITIVE_INFINITY;
+    for(let num of nums) {
+        const randomValInRangeK = Math.round((Math.random() * (2 * k)) - k)
+        num = num + randomValInRangeK;
+        if(num > max) {
+            max = num;
+        }
+        if(num < min) {
+            min = num;
+        }
+    }
+
+    return (max - min);
+}
+
+const nums = [1], k = 0;
+console.log(calcArrayScore(nums, k));
