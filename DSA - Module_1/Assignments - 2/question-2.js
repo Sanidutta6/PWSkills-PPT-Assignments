@@ -9,3 +9,13 @@ Example 1:
 Input: candyType = [1,1,2,2,3,3]
 Output: 3
 */
+
+const distributeCandies = (candyType) => {
+  const uniqueCandies = new Set(candyType);
+  const maxTypes = candyType.length / 2;
+
+  return Math.min(uniqueCandies.size, maxTypes);
+};
+
+const candyType = [1, 1, 2, 2, 3, 3];
+console.log(distributeCandies(candyType));

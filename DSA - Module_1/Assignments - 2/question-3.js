@@ -11,3 +11,24 @@ Example 1:
 Input: nums = [1,3,2,2,5,2,3,7]
 Output: 5
 */
+
+const findLHS = (nums) => {
+  const frequencyMap = new Map();
+  let maxLength = 0;
+
+  for (const num of nums) {
+    frequencyMap.set(num, (frequencyMap.get(num) || 0) + 1);
+  }
+
+  for (const [num, frequency] of frequencyMap) {
+    if (frequencyMap.has(num + 1)) {
+      const harmoniousLength = frequency + frequencyMap.get(num + 1);
+      maxLength = Math.max(maxLength, harmoniousLength);
+    }
+  }
+
+  return maxLength;
+};
+
+const nums = [1, 3, 2, 2, 5, 2, 3, 7];
+console.log(findLHS(nums));
