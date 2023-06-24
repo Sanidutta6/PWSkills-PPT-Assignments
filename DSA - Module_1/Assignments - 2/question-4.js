@@ -7,3 +7,23 @@ Example 1:
 Input: flowerbed = [1,0,0,0,1], n = 1
 Output: true
 */
+
+const canPlaceFlowers = function (flowerbed, n) {
+  for (let i = 0; i < flowerbed.length; i++) {
+    if (flowerbed[i] === 1) continue;
+
+    if (
+      (i === 0 || flowerbed[i - 1] === 0) &&
+      (i === flowerbed.length - 1 || flowerbed[i + 1] === 0)
+    ) {
+      flowerbed[i] = 1;
+      n--;
+    }
+  }
+
+  return n <= 0;
+};
+
+
+const flowerbed = [1,0,0,0,1], n = 1;
+console.log(canPlaceFlowers(flowerbed, n));
