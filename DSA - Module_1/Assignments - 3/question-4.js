@@ -9,3 +9,26 @@ Example 1:
 Input: nums = [1,3,5,6], target = 5
 Output: 2
 */
+const BinarySearch = (nums, val) => {
+  // Non-recursive approach
+  let low = 0,
+    high = nums.length - 1;
+
+  while (low <= high) {
+    let mid = Math.floor((low + high) / 2);
+
+    if (nums[mid] === val) {
+      return mid;
+    } else if (nums[mid] < val) {
+      low = mid + 1;
+    } else {
+      high = mid - 1;
+    }
+  }
+
+  return low;
+};
+
+const nums = [1, 3, 5, 6],
+  target = 5;
+console.log(BinarySearch(nums, target));

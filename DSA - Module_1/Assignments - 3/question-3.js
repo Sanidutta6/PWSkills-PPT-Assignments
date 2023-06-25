@@ -25,3 +25,34 @@ The replacement must be in place and use only constant extra memory.
 Input: nums = [1,2,3]
 Output: [1,3,2]
 */
+
+const nextPermutation = (nums) => {
+  const n = nums.length;
+
+  let i = n - 2;
+  while (i >= 0 && nums[i] >= nums[i + 1]) {
+    i--;
+  }
+
+  if (i >= 0) {
+    let j = n - 1;
+    while (j > i && nums[j] <= nums[i]) {
+      j--;
+    }
+    // Swap
+    [nums[i], nums[j]] = [nums[j], nums[i]];
+  }
+
+  //   Reverse from start to end
+  let start = i + 1,
+    end = n - 1;
+  while (start < end) {
+    [nums[start], nums[end]] = [nums[end], nums[start]];
+    start++;
+    end--;
+  }
+};
+
+const nums = [1, 2, 3];
+nextPermutation(nums);
+console.log(nums);
