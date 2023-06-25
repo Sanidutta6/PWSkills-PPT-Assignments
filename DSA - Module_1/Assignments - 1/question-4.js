@@ -3,22 +3,22 @@
     Increment the large integer by one and return the resulting array of digits.
 */
 
-const IncrementByVal = (nums, val=1) => {
-    let carry = 0;
-    for(let i = nums.length - 1; i >= 0; i-- ) {
-        nums[i] = nums[i] + val + carry;
-        carry = (nums[i] > 9) ? (nums[i] - 9) : 0;
+const IncrementByVal = (nums, val = 1) => {
+  let carry = 0;
+  for (let i = nums.length - 1; i >= 0; i--) {
+    nums[i] = nums[i] + val + carry;
+    carry = nums[i] > 9 ? Math.floor(nums[i] / 10) : 0;
 
-        if(nums[i] > 9) {
-            carry = nums[i] - 9;
-            nums[i] = 9
-        } else if(carry == 0) {
-            return nums;
-        }
+    if (nums[i] > 9) {
+      nums[i] = nums[i] % 10;
+    } else if (carry == 0) {
+      return nums;
     }
-    const carrySplitedArray = Array.from(String(carry), Number);
-    return [...carrySplitedArray, ...nums]
-}
+    val = 0;
+  }
+  const carrySplitedArray = Array.from(String(carry), Number);
+  return [...carrySplitedArray, ...nums];
+};
 
-const digits = [1,2,3];
+const digits = [1, 2, 3];
 console.log(IncrementByVal(digits));
