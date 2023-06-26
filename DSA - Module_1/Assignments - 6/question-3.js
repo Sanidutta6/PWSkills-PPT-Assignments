@@ -8,8 +8,6 @@ Recall that arr is a mountain array if and only if:
     - arr[0] < arr[1] < ... < arr[i - 1] < arr[i]
     - arr[i] > arr[i + 1] > ... > arr[arr.length - 1]
 
-![Screenshot 2023-05-29 005352.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5565e778-ac57-4ced-85a2-ccb13268bdf6/Screenshot_2023-05-29_005352.png)
-
 **Example 1:**
 
 **Input:** arr = [2,1]
@@ -18,3 +16,24 @@ Recall that arr is a mountain array if and only if:
 
 false
 */
+
+const isValidMountainArray = (arr) => {
+  const n = arr.length;
+  if (n < 3) {
+    return false;
+  }
+
+  let i = 0,
+    j = n - 1;
+  while (i < n - 1 && arr[i] < arr[i + 1]) {
+    i++;
+  }
+  while (j > 0 && arr[j] < arr[j - 1]) {
+    j--;
+  }
+
+  return i > 0 && j < n - 1 && i === j;
+};
+
+const arr = [2,1];
+console.log(isValidMountainArray(arr));
