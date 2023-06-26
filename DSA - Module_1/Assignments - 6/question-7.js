@@ -2,10 +2,44 @@
 Given a positive integer n, generate an n x n matrix filled with elements from 1 to n2 in spiral order.
 
 **Example 1:**
-
-![Screenshot 2023-05-29 005522.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/00c8517f-7682-4e0b-bdd9-ce0e087f3f94/Screenshot_2023-05-29_005522.png)
-
 **Input:** n = 3
 
 **Output:** [[1,2,3],[8,9,4],[7,6,5]]
 */
+
+const GenerateSpiralMatrix = (n) => {
+  const matrix = Array.from({ length: n }, () => new Array(n));
+  let num = 1;
+  let top = 0;
+  let bottom = n - 1;
+  let left = 0;
+  let right = n - 1;
+
+  while (num <= n * n) {
+    for (let i = left; i <= right; i++) {
+      matrix[top][i] = num++;
+    }
+    top++;
+
+    for (let i = top; i <= bottom; i++) {
+      matrix[i][right] = num++;
+    }
+    right--;
+
+    for (let i = right; i >= left; i--) {
+      matrix[bottom][i] = num++;
+    }
+    bottom--;
+
+    for (let i = bottom; i >= top; i--) {
+      matrix[i][left] = num++;
+    }
+    left++;
+  }
+
+  return matrix;
+};
+
+// Example usage:
+const n = 3;
+console.log(GenerateSpiralMatrix(n));
