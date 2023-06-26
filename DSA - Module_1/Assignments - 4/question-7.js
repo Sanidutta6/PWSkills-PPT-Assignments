@@ -5,11 +5,24 @@ Count and return *the number of maximum integers in the matrix after performing 
 
 **Example 1:**
 
-![q4.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4d0890d0-7bc7-4f59-be8e-352d9f3c1c52/q4.jpg)
-
 **Input:** m = 3, n = 3, ops = [[2,2],[3,3]]
 
 **Output:** 4
 
 **Explanation:** The maximum integer in M is 2, and there are four of it in M. So return 4.
 */
+
+const maxCount = (m, n, ops) => {
+  let minA = m;
+  let minB = n;
+
+  for (const [ai, bi] of ops) {
+    minA = Math.min(minA, ai);
+    minB = Math.min(minB, bi);
+  }
+
+  return minA * minB;
+};
+
+const m = 3, n = 3, ops = [[2,2],[3,3]];
+console.log(maxCount(m, n, ops));

@@ -9,8 +9,6 @@ Return *an* m x n *2D array constructed according to the above procedure, or an 
 
 **Example 1:**
 
-![Screenshot 2023-05-29 004311.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/de7ec927-9e60-4545-9475-f3ee31116192/Screenshot_2023-05-29_004311.png)
-
 **Input:** original = [1,2,3,4], m = 2, n = 2
 
 **Output:** [[1,2],[3,4]]
@@ -21,3 +19,28 @@ The first group of n=2 elements in original, [1,2], becomes the first row in the
 
 The second group of n=2 elements in original, [3,4], becomes the second row in the constructed 2D array.
 */
+
+const convert1DTo2D = (nums, m, n) => {
+  const length = original.length;
+
+  if (length !== m * n) {
+    return [];
+  }
+
+  const result = new Array(m);
+
+  for (let i = 0; i < m; i++) {
+    result[i] = new Array(n);
+    for (let j = 0; j < n; j++) {
+      const index = i * n + j;
+      result[i][j] = original[index];
+    }
+  }
+
+  return result;
+};
+
+const original = [1, 2, 3, 4],
+  m = 2,
+  n = 2;
+console.log(convert1DTo2D(nums, m, n));

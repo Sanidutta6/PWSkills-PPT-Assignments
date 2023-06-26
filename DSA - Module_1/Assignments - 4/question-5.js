@@ -5,13 +5,31 @@ Given the integer n, return *the number of **complete rows** of the staircase yo
 
 **Example 1:**
 
-[]()
-
-![v2.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4bd91cfa-d2b1-47b3-8197-a72e8dcfff4b/v2.jpg)
-
 **Input:** n = 5
 
 **Output:** 2
 
 **Explanation:** Because the 3rd row is incomplete, we return 2.
 */
+
+const arrangeCoins = (n) => {
+  let left = 0;
+  let right = n;
+
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    const coins = (mid * (mid + 1)) / 2;
+
+    if (coins === n) {
+      return mid;
+    } else if (coins < n) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+
+  return right;
+};
+
+console.log(arrangeCoins(5));
