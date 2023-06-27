@@ -13,3 +13,29 @@ A **shift** on s consists of moving the leftmost character of s to the rightmost
 
 true
 */
+
+const rotateString = (s) => {
+  return s.slice(1) + s[0];
+};
+
+const RotateStringEquals = (s, goal) => {
+  if (s.length !== goal.length) {
+    return false;
+  }
+
+  if (s === goal) {
+    return true;
+  }
+
+  for (let i = 0; i < s.length; i++) {
+    s = rotateString(s);
+    if (s === goal) {
+      return true;
+    }
+  }
+
+  return false;
+};
+
+const s = "abcde", goal = "cdeab";
+console.log(RotateStringEquals(s, goal));
