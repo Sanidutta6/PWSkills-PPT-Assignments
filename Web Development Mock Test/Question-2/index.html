@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        height: 100vh;
+        width: 100vw;
+        background-color: #161677;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        width: 30%;
+        border: 2px solid #000000;
+        border-radius: 1rem;
+        background-color: #6cb1e1;
+        padding: 1rem 2rem;
+      }
+      .container > h1 {
+        color: white;
+        text-align: center;
+      }
+      .input-group:not(:last-child) {
+        width: 100%;
+        margin-top: 1rem;
+        border-bottom: 2px solid #ffffff;
+        color: white;
+        font-size: 21px;
+        display: flex;
+      }
+      .input-group:last-child {
+        margin-top: 1rem;
+        display: flex;
+        gap: 2rem;
+      }
+      .input-group > input[type="text"],
+      .input-group > input[type="number"],
+      .input-group > input[type="password"],
+      .input-group > input[type="tel"],
+      .input-group > input[type="email"],
+      .input-group > input[type="date"] {
+        width: 100%;
+        border: none;
+        outline: none;
+        background-color: #6cb1e1;
+        color: white;
+        font-size: 21px;
+      }
+
+      .input-group > input:not([type="radio"])::placeholder {
+        color: white;
+      }
+      button[type="submit"] {
+        padding: 0.5rem 1.5rem;
+        border: 1px solid #000000;
+        border-radius: 1rem;
+        background-color: #00f504;
+        font-size: 18px;
+      }
+      button[type="reset"] {
+        padding: 0.5rem 1.5rem;
+        border: 1px solid #000000;
+        border-radius: 1rem;
+        background-color: #6cb1e1;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Sign Up Form</h1>
+      <form action="" onsubmit="validateForm(event)">
+        <div class="input-group">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Name"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Phone No"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <input type="number" id="age" name="age" placeholder="Age" required />
+        </div>
+        <div class="input-group">
+          <label for="gender">Gender:</label>
+          <input
+            type="radio"
+            id="gender-male"
+            name="gender"
+            value="Male"
+            required
+          />
+          <label for="gender-male">Male</label>
+          <input
+            type="radio"
+            id="gender-female"
+            name="gender"
+            value="Female"
+            required
+          />
+          <label for="gender-female">Female</label>
+        </div>
+        <div class="input-group">
+          <input
+            type="date"
+            id="admission"
+            name="admission"
+            placeholder="Date Of Admission"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label for="color">Favorite Color</label>
+          <input type="color" id="color" name="color" required />
+        </div>
+        <div class="input-group">
+          <button type="submit">Submit</button>
+          <button type="Reset">Reset</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function validateForm(event) {
+        event.preventDefault(); // Prevents form submission if validation fails
+
+        // Get form values
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const password = document.getElementById("password").value;
+        const age = document.getElementById("age").value;
+        const gender = document.querySelector('input[name="gender"]:checked');
+        const admission = document.getElementById("admission").value;
+        const color = document.getElementById("color").value;
+
+        // Perform validation
+        if (
+          !name ||
+          !email ||
+          !phone ||
+          !password ||
+          !age ||
+          !gender ||
+          !admission ||
+          !color
+        ) {
+          alert("Please fill in all required fields.");
+          return;
+        }
+
+        if (age < 18 || age > 100) {
+          return;
+        }
+
+        // Form is valid, perform further actions (e.g., submit to server)
+        alert("Form submitted successfully!");
+        // Add your further code here for form submission or any other actions
+      }
+    </script>
+  </body>
+</html>

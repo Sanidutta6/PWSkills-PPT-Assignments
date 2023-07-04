@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            height: 200vh;
+        }
+      .box-static {
+        position: static;
+        background-color: #ffcccc;
+        height: 100px;
+        width: 100px;
+      }
+
+      .box-fixed {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background-color: #ccffcc;
+        height: 100px;
+        width: 100px;
+      }
+
+      .box-sticky {
+        position: sticky;
+        top: 50px;
+        background-color: #ccccff;
+        height: 100px;
+        width: 100px;
+      }
+
+      .box-relative {
+        position: relative;
+        top: 20px;
+        left: 20px;
+        background-color: #ffffcc;
+        height: 100px;
+        width: 100px;
+      }
+
+      .box-absolute {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        background-color: #ccffff;
+        height: 100px;
+        width: 100px;
+      }
+
+      .box-parent {
+        position: relative;
+        height: 100px;
+        width: 100px;
+      }
+
+      .box-child {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: #ffccff;
+        height: 100px;
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Explain all the CSS positions(static, fixed, sticky, relative, absolute) with one code example each -->
+    <div class="box-static">Static Position</div>
+    <div class="box-fixed">Fixed Position</div>
+    <div class="box-sticky">Sticky Position</div>
+    <div class="box-relative">Relative Position</div>
+    <div class="box-absolute">Absolute Position</div>
+    <div class="box-parent">
+      <div class="box-child">Child Element</div>
+    </div>
+  </body>
+</html>
