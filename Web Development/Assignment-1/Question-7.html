@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 80vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        width: 70%;
+        text-align: center;
+      }
+      form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+      #link {
+        width: 15rem;
+        padding: 0.3rem 0.5rem;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid black;
+        font-size: 18px;
+      }
+      #submit {
+        padding: 0.3rem 0.5rem;
+        background-color: orange;
+        border: none;
+        outline: none;
+        border-radius: 6px;
+        color: black;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form>
+        <div class="input-group">
+          <input
+            type="text"
+            name="link"
+            id="link"
+            placeholder="Paste Remote Music File Link Here"
+          />
+        </div>
+        <div class="input-group">
+          <input type="submit" id="submit" value="Submit" />
+        </div>
+      </form>
+      <audio controls id="music-player" width="400px" height="300px">
+        <source
+          src="https://www.kozco.com/tech/piano2-Audacity1.2.5.mp3"
+          autoplay="false"
+          name="musicPlayer"
+          id="musicPlayer"
+        />
+      </audio>
+    </div>
+    <script>
+      const submitBtn = document.getElementById("submit");
+      function addMusicURL(e) {
+        e.preventDefault();
+
+        const regex = /^https?:\/\/\S+\.mp3$/;
+        const musicLink = document.getElementById("link").value;
+        const musicSource = document.getElementById("musicPlayer");
+
+        if (!regex.test(musicLink)) {
+          return console.log("Invalid Link");
+        }
+
+        musicSource.setAttribute("src", musicLink);
+        const audioPlayer = document.getElementById("music-player");
+        audioPlayer.load();
+        console.log("Added Successfully");
+      }
+
+      submitBtn.addEventListener("click", addMusicURL);
+    </script>
+  </body>
+</html>

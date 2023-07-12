@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .box {
+        background-color: red;
+        height: 300px;
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      const box = document.getElementsByClassName("box")[0];
+
+      function handleClick() {
+        const computedStyle = getComputedStyle(box);
+        const height = parseInt(computedStyle.height);
+        const width = parseInt(computedStyle.width);
+
+        box.style.height = `${height * 2}px`;
+        box.style.width = `${width * 2}px`;
+        box.style.backgroundColor = "yellow";
+
+        box.removeEventListener("click", handleClick);
+      }
+
+      box.addEventListener("click", handleClick);
+    </script>
+  </body>
+</html>
